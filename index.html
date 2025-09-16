@@ -83,13 +83,14 @@
 
         .section-content {
             padding: 0;
-            max-height: 1000px;
-            overflow: hidden;
+            max-height: none; /* 制限を削除 */
+            overflow: visible; /* overflowを変更 */
             transition: all 0.3s ease;
         }
 
         .section-content.collapsed {
             max-height: 0;
+            overflow: hidden; /* 折りたたみ時のみhidden */
         }
 
         .step {
@@ -98,6 +99,7 @@
             display: flex;
             align-items: flex-start;
             transition: background-color 0.3s ease;
+            min-height: fit-content; /* 最小高さを内容に合わせる */
         }
 
         .step:hover {
@@ -124,17 +126,21 @@
 
         .step-content {
             flex: 1;
+            word-wrap: break-word; /* 長いテキストの折り返しを改善 */
         }
 
         .step-title {
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 8px; /* マージンを少し増やす */
             color: #2d3748;
+            font-size: 1.1rem; /* フォントサイズを少し大きく */
         }
 
         .step-description {
             color: #718096;
-            font-size: 0.9rem;
+            font-size: 0.95rem; /* フォントサイズを少し大きく */
+            line-height: 1.6; /* 行間を広げて読みやすく */
+            white-space: pre-line; /* 改行を保持 */
         }
 
         .step-photo {
@@ -202,15 +208,17 @@
         .tip {
             background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
             margin: 20px;
-            padding: 15px;
+            padding: 20px; /* パディングを増やす */
             border-radius: 10px;
             border-left: 4px solid #e17055;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 軽いシャドウを追加 */
         }
 
         .tip-title {
             font-weight: bold;
             color: #2d3748;
-            margin-bottom: 5px;
+            margin-bottom: 8px; /* マージンを増やす */
+            font-size: 1.05rem; /* フォントサイズを少し大きく */
         }
 
         .navigation {
@@ -259,6 +267,7 @@
             .step {
                 flex-direction: column;
                 align-items: flex-start;
+                padding: 15px; /* モバイルでのパディングを調整 */
             }
 
             .step-photo {
@@ -270,6 +279,10 @@
             .menu-photo {
                 width: 120px;
                 height: 120px;
+            }
+
+            .step-description {
+                font-size: 0.9rem; /* モバイルでは少し小さく */
             }
         }
     </style>
@@ -290,35 +303,42 @@
                     <div class="step-number">☕</div>
                     <div class="step-content">
                         <div class="step-title">アイスオレ</div>
-                        <div class="step-description">グラスに氷を入れて1/3牛乳を入れてから2/3コーヒーを注ぐ<br>温めは耐熱グラスでレンジに入れて温める</div>
+                        <div class="step-description">グラスに氷を入れて1/3牛乳を入れてから2/3コーヒーを注ぐ
+温めは耐熱グラスでレンジに入れて温める</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">🫖</div>
                     <div class="step-content">
                         <div class="step-title">チャイ</div>
-                        <div class="step-description">グラスに氷を入れて原液をコップに3（チャイ）:7（豆乳）の割合<br>温めは耐熱グラスに入れてレンジか鍋で</div>
+                        <div class="step-description">グラスに氷を入れて原液をコップに3（チャイ）:7（豆乳）の割合
+温めは耐熱グラスに入れてレンジか鍋で</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">☕</div>
                     <div class="step-content">
                         <div class="step-title">Rコーヒー</div>
-                        <div class="step-description">グラスに氷を入れてアイスコーヒーをコップの8割<br>牛乳を軽量コップ1メモリまで入れてレンジ1分<br>温めたらミキシングしてアイスコーヒーの上に入れる、その上に黒糖をふりかける</div>
+                        <div class="step-description">グラスに氷を入れてアイスコーヒーをコップの8割
+牛乳を軽量コップ1メモリまで入れてレンジ1分
+温めたらミキシングしてアイスコーヒーの上に入れる、その上に黒糖をふりかける</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">🥤</div>
                     <div class="step-content">
                         <div class="step-title">クリームソーダ</div>
-                        <div class="step-description">グラスにたっぷり氷を入れてコップ3cmくらい原液＋炭酸<br>白い冷凍庫からアイスクリームをよそって<br>チェリーを添える。アイスコーヒーはチェリーなし。（銀の冷蔵庫orお皿横の棚）</div>
+                        <div class="step-description">グラスにたっぷり氷を入れてコップ3cmくらい原液＋炭酸
+白い冷凍庫からアイスクリームをよそって
+チェリーを添える。アイスコーヒーはチェリーなし。（銀の冷蔵庫orお皿横の棚）</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">🫐</div>
                     <div class="step-content">
                         <div class="step-title">アサイー</div>
-                        <div class="step-description">ビールグラスが入っている冷凍庫にある凍った仕込みアサイーを少し溶かしてミキサーへ入れて砕く<br>グラノーラ2杯、ミルクパウダースプーン半分をよそって木製スプーンをつける</div>
+                        <div class="step-description">ビールグラスが入っている冷凍庫にある凍った仕込みアサイーを少し溶かしてミキサーへ入れて砕く
+グラノーラ2杯、ミルクパウダースプーン半分をよそって木製スプーンをつける</div>
                     </div>
                 </div>
                 <div class="step">
@@ -330,8 +350,8 @@
                 </div>
                 <div class="tip">
                     <div class="tip-title">🍺 アルコール</div>
-                    焼酎：大きいカップ1杯<br>
-                    ウイスキーなど度数高い：小さいカップ1杯
+                    焼酎：大きいカップ1杯
+ウイスキーなど度数高い：小さいカップ1杯
                 </div>
             </div>
         </div>
@@ -345,21 +365,25 @@
                     <div class="step-number">🐔</div>
                     <div class="step-content">
                         <div class="step-title">ジャークチキンブリトー</div>
-                        <div class="step-description">チキン100gをお皿に入れてレンジ1分<br>チーズ2→チキン→にんじん3→マヨネーズ→レタス1で巻く。<br>フライパンかトースターで焼き目がつくくらいで焼く、焦げに注意</div>
+                        <div class="step-description">チキン100gをお皿に入れてレンジ1分
+チーズ2→チキン→にんじん3→マヨネーズ→レタス1で巻く。
+フライパンかトースターで焼き目がつくくらいで焼く、焦げに注意</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">🥩</div>
                     <div class="step-content">
                         <div class="step-title">ビーフブリトー</div>
-                        <div class="step-description">冷蔵庫または冷凍庫からご飯50g、タコミート30g、ビーフ5つ取り出してレンジで温め。<br>ご飯→肉→タコミート→豆→ニンニクマヨ→レタスで巻く、フライパンかトースターで焼き目がつくくらいで焼く、焦げに注意</div>
+                        <div class="step-description">冷蔵庫または冷凍庫からご飯50g、タコミート30g、ビーフ5つ取り出してレンジで温め。
+ご飯→肉→タコミート→豆→ニンニクマヨ→レタスで巻く、フライパンかトースターで焼き目がつくくらいで焼く、焦げに注意</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">🐟</div>
                     <div class="step-content">
                         <div class="step-title">サバブリトー</div>
-                        <div class="step-description">冷凍庫からサバ（半身）を取り出してレンジで温め、<br>チーズ2→サバ→ソース（レモンマヨ小さじ3杯）→人参3→レタス1で巻く、フライパンかトースターで焼き目がつくくらいで焼く、焦げに注意</div>
+                        <div class="step-description">冷凍庫からサバ（半身）を取り出してレンジで温め、
+チーズ2→サバ→ソース（レモンマヨ小さじ3杯）→人参3→レタス1で巻く、フライパンかトースターで焼き目がつくくらいで焼く、焦げに注意</div>
                     </div>
                 </div>
                 <div class="step">
@@ -373,7 +397,8 @@
                     <div class="step-number">🌮</div>
                     <div class="step-content">
                         <div class="step-title">タコミートブリトー</div>
-                        <div class="step-description">冷蔵庫または冷凍庫からタコミートを80gレンジで温める、<br>チーズ2→にんじん3→レタス1→タコミート→マヨで巻く、フライパンかトースターで焼き目がつくくらい焼く、焦げに注意</div>
+                        <div class="step-description">冷蔵庫または冷凍庫からタコミートを80gレンジで温める、
+チーズ2→にんじん3→レタス1→タコミート→マヨで巻く、フライパンかトースターで焼き目がつくくらい焼く、焦げに注意</div>
                     </div>
                 </div>
             </div>
@@ -388,27 +413,23 @@
                     <div class="step-number">🐔</div>
                     <div class="step-content">
                         <div class="step-title">ジャークチキンボウル</div>
-                        <div class="step-description">
-                            1. ご飯120gとチキン150gをレンジで温める<br>
-                            2. ご飯をお皿によそって上にフライドオニオンをかける<br>
-                            3. レタスをお皿の上側に敷き、チキンをレタスの上に乗せる<br>
-                            4. ボトルチーズをチキンにかける<br>
-                            5. 余白にマヨ、肉の上にパプリカパウダー<br>
-                            6. セットの場合はサラダも同じお皿に
-                        </div>
+                        <div class="step-description">1. ご飯120gとチキン150gをレンジで温める
+2. ご飯をお皿によそって上にフライドオニオンをかける
+3. レタスをお皿の上側に敷き、チキンをレタスの上に乗せる
+4. ボトルチーズをチキンにかける
+5. 余白にマヨ、肉の上にパプリカパウダー
+6. セットの場合はサラダも同じお皿に</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">🌮</div>
                     <div class="step-content">
                         <div class="step-title">タコミートボウル</div>
-                        <div class="step-description">
-                            1. ご飯120g、タコミート100gをレンジで温める<br>
-                            2. お皿の中心にご飯よそい、レタスの千切りにしたものをご飯の周りによそう<br>
-                            3. ご飯の上に温めたタコミートをかける<br>
-                            4. タコミート用のチーズをかける<br>
-                            5. タコミートの上にパプリカをかける
-                        </div>
+                        <div class="step-description">1. ご飯120g、タコミート100gをレンジで温める
+2. お皿の中心にご飯よそい、レタスの千切りにしたものをご飯の周りによそう
+3. ご飯の上に温めたタコミートをかける
+4. タコミート用のチーズをかける
+5. タコミートの上にパプリカをかける</div>
                     </div>
                     <div class="step-photo">
                         <img src="tacorice.JPG" alt="タコミートボウル" class="menu-photo" onclick="openModal('tacorice.JPG', 'タコミートボウル')">
@@ -418,21 +439,26 @@
                     <div class="step-number">🍟</div>
                     <div class="step-content">
                         <div class="step-title">フライドポテト</div>
-                        <div class="step-description">茶色の丸い皿によそう<br>白い冷凍庫にあるフライドポテトを油で揚げて、ザルとボールにあげる、塩・パセリ・ガーリックパウダーをかける</div>
+                        <div class="step-description">茶色の丸い皿によそう
+白い冷凍庫にあるフライドポテトを油で揚げて、ザルとボールにあげる、塩・パセリ・ガーリックパウダーをかける</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">🌶️</div>
                     <div class="step-content">
                         <div class="step-title">ナチョス</div>
-                        <div class="step-description">茶色の丸い皿によそう<br>温めたタコミート80gとチーズ（ボトル）をかける</div>
+                        <div class="step-description">茶色の丸い皿によそう
+温めたタコミート80gとチーズ（ボトル）をかける</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">🌭</div>
                     <div class="step-content">
                         <div class="step-title">ソーセージ</div>
-                        <div class="step-description">白の冷凍庫から2本<br>蒸し焼き（水を少し加えながら）<br>中身が赤くないか確認後、輪切り<br>チーズ（ボトル）・ケチャップ・マヨネーズを添える</div>
+                        <div class="step-description">白の冷凍庫から2本
+蒸し焼き（水を少し加えながら）
+中身が赤くないか確認後、輪切り
+チーズ（ボトル）・ケチャップ・マヨネーズを添える</div>
                     </div>
                 </div>
                 <div class="step">
@@ -454,46 +480,42 @@
                     <div class="step-number">🌅</div>
                     <div class="step-content">
                         <div class="step-title">開店作業</div>
-                        <div class="step-description">
-                            1.玄関・トイレの鍵開け<br>
-                            2.講師パンフレットを前に出す<br>
-                            3.スピーカーをつける<br>
-                            4.コーヒーメーカーをつける<br>
-                            5.店内BGMをつける<br>
-                            6.店内電気をつける<br>
-                            7.外の電気をつける<br>
-                            8.デッキのセッティング<br>
-                            9.立ち看板を前に出す<br>
-                            10.外に音楽をかける（ipad）<br>
-                            11.店内モニターをつける<br>
-                            12.openしたらInstagramストーリーをあげる<br>
-                            13.店内掃き掃除<br>
-                            14.ガムシロ・ミルク補充<br>
-                            15.おしぼり補充
-                        </div>
+                        <div class="step-description">1.玄関・トイレの鍵開け
+2.講師パンフレットを前に出す
+3.スピーカーをつける
+4.コーヒーメーカーをつける
+5.店内BGMをつける
+6.店内電気をつける
+7.外の電気をつける
+8.デッキのセッティング
+9.立ち看板を前に出す
+10.外に音楽をかける（ipad）
+11.店内モニターをつける
+12.openしたらInstagramストーリーをあげる
+13.店内掃き掃除
+14.ガムシロ・ミルク補充
+15.おしぼり補充</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">🌙</div>
                     <div class="step-content">
                         <div class="step-title">閉店作業</div>
-                        <div class="step-description">
-                            1.ビールサーバー掃除（水通し、受け皿洗い）<br>
-                            2.コーヒーメーカースイッチ消す<br>
-                            3.換気扇消す<br>
-                            4.シンク掃除<br>
-                            5.作業台のアルコール消毒<br>
-                            6.タオル類漂白つけ<br>
-                            7.レジ締め<br>
-                            8.スコーンラップでしまう<br>
-                            9.のぼりと看板をしまう<br>
-                            10.2Fの電気・エアコン消し<br>
-                            11.ガスを締める<br>
-                            12.ご飯をジップロックに120gで入れて冷凍庫に入れる
-                            13.店内掃き掃除、机拭き<br>
-                            14.スピーカーは必ず充電する<br>
-                            15.ドリンク下の水受けをシンクに流す
-                        </div>
+                        <div class="step-description">1.ビールサーバー掃除（水通し、受け皿洗い）
+2.コーヒーメーカースイッチ消す
+3.換気扇消す
+4.シンク掃除
+5.作業台のアルコール消毒
+6.タオル類漂白つけ
+7.レジ締め
+8.スコーンラップでしまう
+9.のぼりと看板をしまう
+10.2Fの電気・エアコン消し
+11.ガスを締める
+12.ご飯をジップロックに120gで入れて冷凍庫に入れる
+13.店内掃き掃除、机拭き
+14.スピーカーは必ず充電する
+15.ドリンク下の水受けをシンクに流す</div>
                     </div>
                 </div>
             </div>
@@ -508,22 +530,18 @@
                     <div class="step-number">🎉</div>
                     <div class="step-content">
                         <div class="step-title">期間限定メニュー</div>
-                        <div class="step-description">
-                            月曜：音楽とワイン　パスタ料理とワイン<br>
-                            木曜：海と汐音　家庭料理<br>
-                            金曜・土曜：TUCKbrothers　餃子と定食
-                        </div>
+                        <div class="step-description">月曜：音楽とワイン　パスタ料理とワイン
+木曜：海と汐音　家庭料理
+金曜・土曜：TUCKbrothers　餃子と定食</div>
                     </div>
                 </div>
                 <div class="step">
-                    <div class="step-number">��</div>
+                    <div class="step-number">🎪</div>
                     <div class="step-content">
                         <div class="step-title">開催中イベント</div>
-                        <div class="step-description">
-                            月曜：音楽とワイン　パスタ料理とワイン<br>
-                            木曜：海と汐音　家庭料理<br>
-                            金曜・土曜：TUCKbrothers　餃子と定食
-                        </div>
+                        <div class="step-description">月曜：音楽とワイン　パスタ料理とワイン
+木曜：海と汐音　家庭料理
+金曜・土曜：TUCKbrothers　餃子と定食</div>
                     </div>
                 </div>
             </div>
